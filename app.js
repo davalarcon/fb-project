@@ -5,6 +5,10 @@ const logger       = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
+const session      = require('express-session');
+const passport     = require('passport');
+
+require('./config/passport-config.js');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/lab-2nd-project');
@@ -34,7 +38,18 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-//PASSPORT middlewares 👇
+//PASSPORT middlewares 👇---------------------------------
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req,res,next)=>{
+  if(req.user){
+    res.locals.currentUser = req.user;
+  }
+  next();
+});
+
 
 //--------ROUTES HERE 👇👇👇👇👇---------------------------------
 

@@ -46,7 +46,7 @@ router.post('/signup',(req, res, next)=>{
           next(err);
           return;
         }
-        res.redirect('/loggedin');
+        res.redirect('/logged');
       });
     }
   );
@@ -54,14 +54,15 @@ router.post('/signup',(req, res, next)=>{
 
 //-------- END REGISTRATION 👆   ---------------------
 
+const passport = require('passport');
 
 //-------- LOG IN - LOG OUT 👇   ---------------------
 
 router.get('/login', (req, res, next)=>{
   if(req.user){
-    res.redirect('/');
+    res.redirect('/logged');
   }else{
-    res.render('loggedin-view.ejs');
+    res.render('auth-views/login-view.ejs');
   }
 });
 
