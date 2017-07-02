@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-default">
+
+        <div class="container-fluid">
+
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default">About Us</button>
+              <button type="button" class="btn btn-default">Products</button>
+              <button type="button" class="btn btn-default">Sign In</button>
+            </div>
+
+          <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img alt="Brand" src="images/long.png" height="20">
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <%- body %>
+
+    <script src="jquery-3.2.1.js"></script>
+  </body>
+</html>
