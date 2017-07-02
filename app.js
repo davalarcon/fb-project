@@ -34,6 +34,9 @@ app.use(layouts);
 const index = require('./routes/index');
 app.use('/', index);
 
+const myAuthRoutes = require ('./routes/auth-routes.js');
+app.use('/', myAuthRoutes);
+
 
 
 
