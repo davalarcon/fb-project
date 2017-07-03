@@ -18,9 +18,29 @@
               <a href="/" class="btn btn-default">Home</a>
               <a href="/aboutUs" class="btn btn-default">About Us</a>
               <a href="/products" class="btn btn-default">Products</a>
+
+            <% if (typeof currentUser === 'object') { %>
+              <a href="/logged" class="btn btn-default">Select</a>
+
+                <a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+
+                <a href="/logout" class="btn btn-default" style="margin-left:15px">Log Out</a>
+          <%  } else {  %>
               <a href="/login" class="btn btn-default">Log In</a>
               <a href="/signup" class="btn btn-default">Sign Up</a>
-              <a href="/logout" class="btn btn-default">Log Out</a>
+
+          <%  }  %>
+
+
             </div>
 
           <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->

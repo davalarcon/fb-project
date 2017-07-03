@@ -76,6 +76,9 @@ router.post('/login',
       failureRedirect: '/login'
     }
   ));
+  //-------- END LOG IN -  👆   ---------------------
+  
+  //---------- LOG OUT 👇 ----------------------
 
 router.get('/logout', (req, res, next)=>{
   req.logout();
@@ -83,7 +86,6 @@ router.get('/logout', (req, res, next)=>{
 });
 
 
-//-------- END LOG IN - LOG OUT 👆   ---------------------
 
 
 //--------  SOCIAL LOG IN 👇  ---------------------
