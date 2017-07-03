@@ -41,7 +41,7 @@ router.post (
        intDiam: req.body.prodIntDiam,
        quantity: req.body.prodQuantity,
        image: '/uploads/'+req.file.filename,
-       addInfo: req.body.prodaddInfo,
+       addInfo: req.body.prodAddInfo,
        createdBy: req.user._id
 
      });

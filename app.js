@@ -64,8 +64,11 @@ app.use('/', index);
 const myAuthRoutes = require ('./routes/auth-routes.js');
 app.use('/', myAuthRoutes);
 
+const myProductRRoutes = require('./routes/product-r-routes.js');
+app.use('/', myProductRRoutes);
 
-
+const myProductSRoutes = require('./routes/product-s-routes.js');
+app.use('/', myProductSRoutes);
 
 
 //---------ROUTES HERE 👆👆👆👆👆👆---------------------------------

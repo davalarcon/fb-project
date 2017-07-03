@@ -8,6 +8,7 @@ const myProductSSchema = new Schema (
     liner: {type: Boolean, default: true},
     adhesive: {type: String, required: true},
     width: {type: Number, required: true},
+    addInfo: {type: String},
     createdBy: {type: Schema.Types.ObjectId, ref: 'User'},
   },
   {
