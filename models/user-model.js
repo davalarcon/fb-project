@@ -8,6 +8,7 @@ const myUserSchema = new Schema(
     businessName: { type: String, require: true },
     businessNit: { type: Number, require: true },
     email: { type: String, require: true },
+    salesRep: {type: String },
     encryptedPassword: { type: String, require: true},
 
     googleId: {type: String },

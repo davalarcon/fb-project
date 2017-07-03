@@ -8,10 +8,14 @@ const layouts      = require('express-ejs-layouts');
 const session      = require('express-session');
 const passport     = require('passport');
 
+//import the 'dotenv' package and load variables from the ".env" files
+require('dotenv').config();
+
+//run all the conde inside passport-config.js
 require('./config/passport-config.js');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/lab-2nd-project');
+mongoose.connect(process.env.MONGODB_URI);
 
 
 const app = express();

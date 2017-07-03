@@ -31,15 +31,17 @@ router.post('/signup',(req, res, next)=>{
         res.render('auth-views/login-view.ejs');
         return;
       }
+
+
       const salt = bcrypt.genSaltSync(10);
       const scrambledPassword = bcrypt.hashSync(req.body.signupPassword, salt);
 
-      const theUser = UserModel({
+      const theUser = new UserModel({
         fullName: req.body.signupFullName,
         businessName: req.body.signupBusinessName,
         businessNit: req.body.signupBusinessNit,
         email: req.body.signupEmail,
-        password: req.body.signupPassword,
+        encryptedPassword: scrambledPassword,
       });
       theUser.save((err)=>{
         if(err){
@@ -65,6 +67,15 @@ router.get('/login', (req, res, next)=>{
     res.render('auth-views/login-view.ejs');
   }
 });
+
+router.post('/login',
+  passport.authenticate(
+    'local',
+    {
+      successRedirect: '/logged',
+      failureRedirect: '/login'
+    }
+  ));
 
 router.get('/logout', (req, res, next)=>{
   req.logout();
