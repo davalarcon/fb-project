@@ -1,9 +1,95 @@
-<h2>NEW PRODUCT ROLLS</h2>
+<div class="container newproduct">
+  <div class"row newproduct">
+    <div class="col-sm-3 newproduct">
 
+    </div>
+    <div class="col-sm-6 newproduct">
+      <h2>NEW PURCHASE ORDER</h2>
+      <p>Please fill out this form to beggining the process. <br>
+      if you wish to get quote, please select "quote"</p>
+    </div>
+    <div class="col-sm-2 newproduct">
 
-<select name="productState">
-	<option value="FL"> Florida </option>
-	<option value="NY"> New York </option>
-	<option value="MA"> Massachussets </option>
-	<option value="CA"> California </option>
-</select>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <img src="/images/sample1.jpg" height"400" alt="">
+    </div>
+    <div class="col-sm-6">
+
+        <form class="form-horizontal" action="/signup" method="post">
+          <div class="form-group">
+            <label for="orderOrQuote-input" class="col-sm-2 control-label">Order/Quote</label>
+            <div class="col-sm-10">
+              <select name = "newProductOrderOrQuote" class="form-control">
+                <option value="QT">Quote</option>
+                <option value="OR">New Order</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="poNumber-input" class="col-sm-2 control-label">PO Number</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="poNumber-input" placeholder="PO Number" name="newProductPoOrder">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="typeOfPaper-input" class="col-sm-2 control-label">Type of Paper</label>
+            <div class="col-sm-10">
+              <select name = "newProductTypeOfPaper" class="form-control">
+                <option value="TH">Thermal</option>
+                <option value="BD">Bond</option>
+                <option value="2P">2 Ply</option>
+                <option value="3P">3 Ply</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="SalesRep-input" class="col-sm-2 control-label">Sales Rep</label>
+            <div class="col-sm-10">
+              <select name = "signupSalesRep" class="form-control">
+                <option value="JN">Javier Niño</option>
+                <option value="SL">Santiago Lopez</option>
+                <option value="ML">Massiel Lopez</option>
+                <option value="GB">Gerardo Botero</option>
+                <option value="RL">Ruben Laverde</option>
+                <option value="AO">Alma Ospina</option>
+                <option value="OF">Oficina</option>
+              </select>
+              <!-- <input type="text" class="form-control" id="SalesRep-input" placeholder="Sales Rep" name="signupSalesRep"> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email-input" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email-input" placeholder="Email" name="signupEmail">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="birthday-input" class="col-sm-2 control-label">Birthday</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="birthday-input" placeholder="Birthday" name="signupBirthDay">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password-input" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password-input" placeholder="Password" name="signupPassword">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Sign up</button>
+            </div>
+          </div>
+        </form>
+
+    </div>
+
+  </div>
+</div>

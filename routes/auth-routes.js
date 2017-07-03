@@ -41,6 +41,8 @@ router.post('/signup',(req, res, next)=>{
         businessName: req.body.signupBusinessName,
         businessNit: req.body.signupBusinessNit,
         email: req.body.signupEmail,
+        salesRep: req.body.signupSalesRep,
+        birthday: req.body.signupBirthDay,
         encryptedPassword: scrambledPassword,
       });
       theUser.save((err)=>{
@@ -77,7 +79,7 @@ router.post('/login',
     }
   ));
   //-------- END LOG IN -  👆   ---------------------
-  
+
   //---------- LOG OUT 👇 ----------------------
 
 router.get('/logout', (req, res, next)=>{

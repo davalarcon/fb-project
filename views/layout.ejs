@@ -21,6 +21,8 @@
 
             <% if (typeof currentUser === 'object') { %>
               <a href="/logged" class="btn btn-default">Select</a>
+              <a href="/products/newR" class="btn btn-default">New R P.O.</a>
+              <a href="/products/newS" class="btn btn-default">New S P.O.</a>
 
                 <a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -35,7 +37,7 @@
 
                 <a href="/logout" class="btn btn-default" style="margin-left:15px">Log Out</a>
           <%  } else {  %>
-              <a href="/login" class="btn btn-default">Log In</a>
+              <a href="/login" class="btn btn-default" style="margin-left:15px">Log In</a>
               <a href="/signup" class="btn btn-default">Sign Up</a>
 
           <%  }  %>

@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const myProductRSchema = new Schema (
   {
+    orderOrQuote: {type: String, required: true},
+    poNumber: {type: Number, required: true},
     typeOfPaper: {type: String, required: true},
     grams: {type: Number, required: true},
     coated: {type: String},
