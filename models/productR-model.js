@@ -6,10 +6,10 @@ const myProductRSchema = new Schema (
   {
     orderOrQuote: {type: String, required: true},
     poNumber: {type: Number, required: true},
-    typeOfPaper: {type: String, required: true},
-    grams: {type: Number, required: true},
+    // typeOfPaper: {type: String, required: true},
+    type: {type: Number, required: true},
     coated: {type: String},
-    width : {type: Number, required: true},
+    width : {type: String, required: true},
     length: {type: Number, required: true},
     intDiam: {type: Number, required: true},
     quantity: {type: Number, required: true},

@@ -33,8 +33,8 @@ router.post (
      console.log('');
 
      const theProductR= new ProductRModel({
-       typeOfPaper: req.body.prodTypeOfPaper,
-       grams: req.body.prodGrams,
+      //  typeOfPaper: req.body.prodTypeOfPaper,
+       Type: req.body.prodGrams,
        coated: req.body.prodCoated,
        width: req.body.prodWidth,
        length: req.body.prodLength,
