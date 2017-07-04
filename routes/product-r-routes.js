@@ -73,7 +73,18 @@ router.get('/my-productsR', (req, res, next)=>{
   });
 
 router.get('/my-productsR/:myId/details', (req, res, next)=>{
-    ProductRModel
-})
+    ProductRModel.findById(
+      req.params.myId,
+      (err, theProduct)=>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.render('my-productsR/product-detail-view.ejs',{
+          theProduct:theProduct
+        });
+      }
+    );
+});
 
 module.exports = router;
