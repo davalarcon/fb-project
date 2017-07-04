@@ -23,7 +23,7 @@ const myUploader = multer ({
 
 router.post (
   '/products',
-  myUploader.single('artFile'),
+  myUploader.single('newProductImage'),
   //                 ➡️ <input name="artFile">
   (req, res, next)=> {
 
@@ -33,16 +33,17 @@ router.post (
      console.log('');
 
      const theProductR= new ProductRModel({
-      //  typeOfPaper: req.body.prodTypeOfPaper,
-       Type: req.body.prodGrams,
-       coated: req.body.prodCoated,
-       width: req.body.prodWidth,
-       length: req.body.prodLength,
-       intDiam: req.body.prodIntDiam,
-       quantity: req.body.prodQuantity,
-       image: '/uploads/'+req.file.filename,
-       addInfo: req.body.prodAddInfo,
-       createdBy: req.user._id
+
+       orderOrQuote: req.body.newProductOrderOrQuote,
+       poNumber: req.body.newProductPoOrder,
+       Type: req.body.newProductType,
+       coated: req.body.newProductCoated,
+       width: req.body.newProductWidth,
+       length: req.body.newProductLength,
+       intDiam: req.body.newProductIntDiam,
+       quantity: req.body.newProductQuantity,
+
+       addInfo: req.body.newProductAddInfo,
 
      });
 
@@ -60,18 +61,19 @@ router.get('/my-productsR', (req, res, next)=>{
         res.redirect('/login');
         return;
       }
-      ProductRModel
-        .find({createdBy: req.user._id})
-        .populate('createdBy')
-        .exec((err, productRResults)=>{
-          if(err){
-            next(err);
-            return;
-          }
-          res.locals.productRResults = productRResults;
+      ProductRModel.find((err, productRResults)=>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.locals.productRResults = productRResults;
+        res.render('product-views/productR-list-view.ejs');
 
-          res.render('product-views/productR-list-view.ejs');
-        });
-});
+      });
+  });
+
+router.get('/my-productsR/:myId/details', (req, res, next)=>{
+    ProductRModel
+})
 
 module.exports = router;

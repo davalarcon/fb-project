@@ -21,9 +21,9 @@
     </div>
     <div class="col-sm-6">
 
-        <form class="form-horizontal" action="/signup" method="post">
+        <form class="form-horizontal" action="/products" method="post">
           <div class="form-group">
-            <label for="orderOrQuote-input" class="col-sm-2 control-label">Order/Quote</label>
+            <label for="orderOrQuote-input" class="col-sm-2 control-label">Order/Quote *</label>
             <div class="col-sm-10">
               <select name = "newProductOrderOrQuote" class="form-control">
                 <option value="QT">Quote</option>
@@ -49,9 +49,9 @@
             </div>
           </div> -->
           <div class="form-group">
-            <label for="grams-input" class="col-sm-2 control-label">Type/Grams</label>
+            <label for="type-input" class="col-sm-2 control-label">Type/Grams *</label>
             <div class="col-sm-10">
-              <select name = "newProductType" class="form-control">
+              <select id="type-input" name = "newProductType" class="form-control">
                 <option value="44">44grms Thermal</option>
                 <option value="48">48grms Thermal</option>
                 <option value="55">55grms Thermal</option>
@@ -63,28 +63,58 @@
               </select>
             </div>
           </div>
+
           <div class="form-group">
-            <label for="width-input" class="col-sm-2 control-label">Width</label>
+            <label for="coated-input" class="col-sm-2 control-label">Coated</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="width-input" placeholder="Width in mm" name="newProductWidth">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="birthday-input" class="col-sm-2 control-label">Birthday</label>
-            <div class="col-sm-10">
-              <input type="date" class="form-control" id="birthday-input" placeholder="Birthday" name="signupBirthDay">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password-input" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="password-input" placeholder="Password" name="signupPassword">
+              <select id="coated-input" class="form-control" name="newProductCoated">
+                <option value="NO">NO</option>
+                <option value="YES">Yes</option>
+              </select>
             </div>
           </div>
 
           <div class="form-group">
+            <label for="width-input" class="col-sm-2 control-label">Width *</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="width-input" placeholder="Width" name="newProductWidth">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="length-input" class="col-sm-2 control-label">Length *</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="length-input" placeholder="Length in Mts" name="newProductLength">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="intDiam-input" class="col-sm-2 control-label">Int. Diam. *</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="intDiam-input" placeholder="Interior Diameter in mm" name="newProductIntDiam">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity-input" class="col-sm-2 control-label">Quantity *</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="quantity-input" placeholder="Quantity" name="newProductQuantity">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="addInfo-input" class="col-sm-2 control-label">Add Info</label>
+            <div class="col-sm-10">
+              <textarea id="addInfo-input" class="form-control" name="newProductAddInfo" placeholder="Please add any additional Information relevant to this order/quote">
+              </textarea>
+            </div>
+          </div>
+
+          <label for="image-file" class="col-sm-2 control-label">  File </label>
+          <input  id="image-file" class="btn btn-default" type="file" name="newProductImage"></input>
+
+          <div class="form-group" style="margin-top:15px;">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Sign up</button>
+              <button type="submit" class="btn btn-default">Submit</button>
             </div>
           </div>
         </form>
