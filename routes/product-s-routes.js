@@ -4,6 +4,7 @@ const ProductSModel = require ('../models/productS-model.js');
 
 const router = express.Router();
 
+
 router.get('/products/newS', (req, res, next)=>{
   if(req.user) {
     res.render('product-views/new-productS-views.ejs');
@@ -12,14 +13,42 @@ router.get('/products/newS', (req, res, next)=>{
   }
 });
 
-router.post('/products',(req, res, next)=>{
+//upload Files---------------------------------
+const multer = require ('multer');
+
+const myUploader = multer ({
+  dest:__dirname + '/../public/uploads/'
+});
+//---------------------------------------------
+
+
+router.post(
+  '/productsS',
+  myUploader.single('newProductImage'),
+
+  (req, res, next)=>{
+
+    console.log('');
+     console.log('req.file(file upload from multer)-------------------');
+     console.log(req.file);
+     console.log('');
+
+
+  let photoUrl = "/images/noimage.png";
+  if (typeof req.file === 'object') {
+    photoUrl = "/uploads/"+req.file.filename;
+  }
   const theProductS = new ProductSModel({
-    frontal: req.body.prodFrontal,
-    liner: req.body.prodLiner,
-    adhesive: req.body.prodAdhesive,
-    width: req.body.prodWidth,
-    addInfo: req.body.prodAddInfo,
-    createdBy: req.user._id
+    orderOrQuote: req.body.newProductOrderOrQuote,
+    poNumber: req.body.newProductPoOrder,
+    frontal: req.body.newProductFrontal,
+    liner: req.body.newProductLiner,
+    adhesive: req.body.newProductAdhesive,
+    width: req.body.newProductWidth,
+    quantity: req.body.newProductQuantity,
+    addInfo: req.body.newProductAddInfo,
+    createdBy: req.user._id,
+    image: photoUrl
 });
 
   theProductS.save((err)=>{
@@ -36,10 +65,7 @@ router.get('/my-productsS', (req, res, next)=>{
     res.redirect('/login');
     return;
   }
-    ProductSModel
-      .find({createdBy: req.user._id})
-      .populate('createdBy')
-      .exec((err, productSResults)=>{
+    ProductSModel.find((err, productSResults)=>{
         if(err){
           next(err);
           return;

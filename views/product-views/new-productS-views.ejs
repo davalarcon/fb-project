@@ -1,1 +1,114 @@
-<h2>NEW PRODUCT SELF ADHESIVE</h2>
+<div class="container newproduct">
+  <div class"row newproduct">
+    <div class="col-sm-3 newproduct">
+
+    </div>
+    <div class="col-sm-6 newproduct">
+      <h2>NEW PO FOR SELF-ADHESIVE</h2>
+      <p>Please fill out this form to beggining the process. <br>
+      if you wish to get quote, please select "quote"</p>
+    </div>
+    <div class="col-sm-2 newproduct">
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <img src="/images/office01.jpg" style="height:340px">
+    </div>
+    <div class="col-sm-6">
+
+        <form class="form-horizontal" action="/productsS" method="post"  enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="orderOrQuote-input" class="col-sm-2 control-label">Order/Quote *</label>
+            <div class="col-sm-10">
+              <select name = "newProductOrderOrQuote" class="form-control">
+                <option value="Quote">Quote</option>
+                <option value="New Order">New Order</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="poNumber-input" class="col-sm-2 control-label">PO Number</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="poNumber-input" placeholder="PO Number" name="newProductPoOrder">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="type-input" class="col-sm-2 control-label">Type/Grams *</label>
+            <div class="col-sm-10">
+              <select id="type-input" name = "newProductFrontal" class="form-control">
+                <option value="44grms Thermal">44grms Thermal</option>
+                <option value="48grms Thermal">48grms Thermal</option>
+                <option value="55grms Thermal">55grms Thermal</option>
+                <option value="80grms Thermal">80grms Thermal</option>
+                <option value="60grms Bond">60grms Bond</option>
+                <option value="75grms Bond">75grms Bond</option>
+                <option value="2 Ply Yellow Copy">2 Ply Yellow Copy</option>
+                <option value="3 Ply Yellow Copy">3 Ply Yellow Copy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="liner-input" class="col-sm-2 control-label">Coated</label>
+            <div class="col-sm-10">
+              <select id="liner-input" class="form-control" name="newProductLiner">
+                <option value="With Liner">With Liner</option>
+                <option value="Linerless">Linerless</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ahesive-input" class="col-sm-2 control-label">Adhesive</label>
+            <div class="col-sm-10">
+              <select id="adhesive-input" class="form-control" name="newProductAdhesive">
+                <option value="Multi Purpose">Multi Purpose</option>
+                <option value="Freezer Grade">Freezer Grade</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="width-input" class="col-sm-2 control-label">Width *</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="width-input" placeholder="Width" name="newProductWidth">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity-input" class="col-sm-2 control-label">Quantity *</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="quantity-input" placeholder="Square Meters" name="newProductQuantity">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="addInfo-input" class="col-sm-2 control-label">Add Info</label>
+            <div class="col-sm-10">
+              <textarea id="addInfo-input" class="form-control" name="newProductAddInfo" placeholder="Please add any additional Information relevant to this order/quote">
+              </textarea>
+            </div>
+          </div>
+
+          <label for="image-file" class="col-sm-2 control-label">  File </label>
+          <input  id="image-file" class="btn btn-default" type="file" name="newProductImage"></input>
+
+          <div class="form-group" style="margin-top:15px;">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+
+    </div>
+
+  </div>
+</div>

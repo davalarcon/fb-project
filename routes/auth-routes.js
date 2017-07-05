@@ -28,7 +28,7 @@ router.post('/signup',(req, res, next)=>{
       }
       if (userFromDb){
         res.locals.messageForUser = "Email is already registered";
-        res.render('auth-views/login-view.ejs');
+        res.render('views/loggedin-view.ejs');
         return;
       }
 

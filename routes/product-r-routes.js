@@ -36,7 +36,7 @@ router.post (
 
        orderOrQuote: req.body.newProductOrderOrQuote,
        poNumber: req.body.newProductPoOrder,
-       Type: req.body.newProductType,
+       typeOfP: req.body.newProductType,
        coated: req.body.newProductCoated,
        width: req.body.newProductWidth,
        length: req.body.newProductLength,
@@ -80,7 +80,7 @@ router.get('/my-productsR/:myId/details', (req, res, next)=>{
           next(err);
           return;
         }
-        res.render('my-productsR/product-detail-view.ejs',{
+        res.render('product-views/productR-detail-view.ejs',{
           theProduct:theProduct
         });
       }

@@ -1,1 +1,40 @@
-<h2>P.Os of Self Adhesive Here</h2>
+<div class="container newproduct">
+  <div class"row newproduct">
+    <div class="col-sm-3 newproduct">
+
+    </div>
+    <div class="col-sm-6 newproduct">
+      <h1>SELF-ADHESIVE POs</h1>
+      <!-- <h2>NEW PURCHASE ORDER</h2> -->
+      <p>Below is a the list of all P.O. orders placed through this system.</p>
+    </div>
+    <div class="col-sm-2 newproduct">
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1">
+        </div>
+      <div class="col-sm-6">
+          <ul class="listR">
+               <%  productSResults.forEach((oneProduct)=>{ %>
+                  <div class="bg-info pos">
+            <li>
+              <h4>Order Id:<%= oneProduct._id %></h4>
+              <h4>Date Created:<%= oneProduct.createdAt %> </h4>
+            <a href="/my-productsS/<%= oneProduct._id%>/details" class="btn btn-info">PO Details</a>
+          </li>
+              </div>
+            <%  })  %>
+          </ul>
+      </div>
+      <div class="col-sm-4 listR imgR">
+      <img src="/images/sample1.jpg" height"400" alt="">
+    </div>
+  </div>
+</div>
+</div>

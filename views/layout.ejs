@@ -21,6 +21,7 @@
 
             <% if (typeof currentUser === 'object') { %>
               <a href="/logged" class="btn btn-default">Select</a>
+              <a href="/my-productsR" class="btn btn-default">Paper POs</a>
               <a href="/products/newR" class="btn btn-default">New R P.O.</a>
               <a href="/products/newS" class="btn btn-default">New S P.O.</a>
 
@@ -35,7 +36,7 @@
                     <li><a href="#">One more separated link</a></li>
                   </ul>
 
-                <a href="/logout" class="btn btn-default" style="margin-left:15px">Log Out</a>
+                <a href="/logout" class="btn btn-warning" style="margin-left:15px">Log Out</a>
           <%  } else {  %>
               <a href="/login" class="btn btn-default" style="margin-left:15px">Log In</a>
               <a href="/signup" class="btn btn-default">Sign Up</a>
