@@ -32,6 +32,11 @@ router.post (
      console.log(req.file);
      console.log('');
 
+     let photoImg = "/images/noimage.png";
+     if (typeof req.file ==='object'){
+       photoImg = "/uploads/"+req.file.filename;
+     }
+
      const theProductR= new ProductRModel({
 
        orderOrQuote: req.body.newProductOrderOrQuote,
@@ -42,8 +47,9 @@ router.post (
        length: req.body.newProductLength,
        intDiam: req.body.newProductIntDiam,
        quantity: req.body.newProductQuantity,
-
        addInfo: req.body.newProductAddInfo,
+       createdBy: req.user._id,
+       image: photoImg,
 
      });
 
@@ -61,13 +67,16 @@ router.get('/my-productsR', (req, res, next)=>{
         res.redirect('/login');
         return;
       }
-      ProductRModel.find((err, productRResults)=>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.locals.productRResults = productRResults;
-        res.render('product-views/productR-list-view.ejs');
+      ProductRModel
+        .find({createdBy: req.user._id})
+        .populate('createdBy')
+        .exec((err, productRResults)=>{
+          if(err){
+            next(err);
+            return;
+          }
+            res.locals.productRResults = productRResults;
+            res.render('product-views/productR-list-view.ejs');
 
       });
   });
@@ -83,6 +92,19 @@ router.get('/my-productsR/:myId/details', (req, res, next)=>{
         res.render('product-views/productR-detail-view.ejs',{
           theProduct:theProduct
         });
+      }
+    );
+});
+
+router.get('/my-productsR/:myId/delete', (req, res, next)=>{
+    ProductRModel.findByIdAndRemove(
+      req.params.myId,
+      (err, theProduct)=>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.redirect('/my-productsR');
       }
     );
 });

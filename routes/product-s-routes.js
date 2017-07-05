@@ -34,11 +34,12 @@ router.post(
      console.log('');
 
 
-  let photoUrl = "/images/noimage.png";
+  let photoImg = "/images/noimage.png";
   if (typeof req.file === 'object') {
-    photoUrl = "/uploads/"+req.file.filename;
+    photoImg = "/uploads/"+req.file.filename;
   }
   const theProductS = new ProductSModel({
+
     orderOrQuote: req.body.newProductOrderOrQuote,
     poNumber: req.body.newProductPoOrder,
     frontal: req.body.newProductFrontal,
@@ -48,7 +49,7 @@ router.post(
     quantity: req.body.newProductQuantity,
     addInfo: req.body.newProductAddInfo,
     createdBy: req.user._id,
-    image: photoUrl
+    image: photoImg
 });
 
   theProductS.save((err)=>{
@@ -65,7 +66,10 @@ router.get('/my-productsS', (req, res, next)=>{
     res.redirect('/login');
     return;
   }
-    ProductSModel.find((err, productSResults)=>{
+    ProductSModel
+      .find({createdBy: req.user._id})
+      .populate('createdBy')
+      .exec((err, productSResults)=>{
         if(err){
           next(err);
           return;
@@ -74,6 +78,38 @@ router.get('/my-productsS', (req, res, next)=>{
 
         res.render('product-views/productS-list-view.ejs');
     });
+});
+
+
+router.get('/my-productsS/:myId/details', (req, res, next)=>{
+    ProductSModel.findById(
+      req.params.myId,
+      (err, theProduct)=>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.render('product-views/productS-detail-view.ejs',{
+          theProduct:theProduct
+        });
+      }
+    );
+});
+
+
+
+
+router.get('/my-productsS/:myId/delete', (req, res, next)=>{
+    ProductSModel.findByIdAndRemove(
+      req.params.myId,
+      (err, theProduct)=>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.redirect('/my-productsS');
+      }
+    );
 });
 
 module.exports = router;

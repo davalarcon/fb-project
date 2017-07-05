@@ -28,7 +28,7 @@ router.post('/signup',(req, res, next)=>{
       }
       if (userFromDb){
         res.locals.messageForUser = "Email is already registered";
-        res.render('views/loggedin-view.ejs');
+        res.render('auth-views/login-view.ejs');
         return;
       }
 
@@ -50,7 +50,7 @@ router.post('/signup',(req, res, next)=>{
           next(err);
           return;
         }
-        res.redirect('/logged');
+        res.render('views/loggedin-view.ejs');
       });
     }
   );
