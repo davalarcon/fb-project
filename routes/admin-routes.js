@@ -40,12 +40,12 @@ router.get('/admin-clients-list', (req, res, next)=>{
         ProductRModel
           .find({createdBy: req.params.myId})
           .populate('createdBy')
-          .exec((err, productRResults)=>{
+          .exec((err, clientsResults)=>{
             if(err){
               next(err);
               return;
             }
-              res.locals.productRResults = productRResults;
+              res.locals.clientsResults = clientsResults;
               res.render('admin-views/admin-product-list-by-client-view.ejs');
 
         });

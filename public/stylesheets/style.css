@@ -2,6 +2,7 @@ body {
 
   padding: 20px 50px 50px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-image: url('../images/black-linen.png');*/
 }
 
 a {
@@ -21,17 +22,19 @@ a {
   margin-top: 15px;
   background-color: #f8f8f8;
 }
+.col-sm-4{
 
+}
 .index{
   height: 200px;
-  padding-top: 60px;
-
+  /*background-image: url('../images/black-linen.png');*/
   border: 1px solid black;
-  border-radius: 3px;
+  border-radius: 25px;
+
 }
 
 .main{
-  padding-left: 100px;
+
 }
 
 .chooseProduct{
