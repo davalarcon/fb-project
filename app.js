@@ -70,6 +70,9 @@ app.use('/', myProductRRoutes);
 const myProductSRoutes = require('./routes/product-s-routes.js');
 app.use('/', myProductSRoutes);
 
+const adminRoutes = require('./routes/admin-routes.js');
+app.use('/', adminRoutes);
+
 
 //---------ROUTES HERE 👆👆👆👆👆👆---------------------------------
 

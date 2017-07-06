@@ -2,6 +2,10 @@ const express = require('express');
 
 const ProductRModel = require ('../models/productR-model.js');
 
+const ProductSModel = require ('../models/productS-model.js');
+
+const UserModel = require ('../models/user-model.js');
+
 const router = express.Router();
 
 
@@ -108,5 +112,8 @@ router.get('/my-productsR/:myId/delete', (req, res, next)=>{
       }
     );
 });
+
+
+
 
 module.exports = router;

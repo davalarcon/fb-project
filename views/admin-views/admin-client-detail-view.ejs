@@ -1,0 +1,26 @@
+<h3>ADMIN CLIENT DETAILS</h3>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1">
+        </div>
+      <div class="col-sm-6">
+          <ul class="bg-info detailsR">
+              <li>Client Id:<%=theClient._id  %> </li>
+              <li>Business Name:<%=theClient.businessName  %> </li>
+              <li>Bussines Nit:<%=theClient.businessNit  %> </li>
+              <li>Email:<%=theClient.email %> </li>
+              <li>User Name:<%=theClient.fullName  %> </li>
+              <li>Sales Rep:<%=theClient.salesRep  %> </li>
+              <li>Birthday:<%=theClient.birthday  %> </li>
+
+              </ul>
+              <a href="/admin-client-detail/<%= theClient._id%>/delete" class="btn btn-danger">DELETE CLIENT</a>
+      </div>
+      <div class="col-sm-4 detailsR imgR">
+        <img src="/images/sample1.jpg" height"400" alt="">
+      </div>
+    </div>
+  </div>
+</div>

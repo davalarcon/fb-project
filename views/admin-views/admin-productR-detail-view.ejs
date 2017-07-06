@@ -1,0 +1,31 @@
+<h3>ADMIN DETAILS</h3>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1">
+        </div>
+      <div class="col-sm-6">
+          <ul class="bg-info detailsR">
+              <li>Order Id:<%=theProduct._id  %> </li>
+              <li>Order or Quote:<%=theProduct.orderOrQuote  %> </li>
+              <li>PO Number:<%=theProduct.poNumber  %> </li>
+              <li>Type of Paper:<%=theProduct.typeOfP  %> </li>
+              <li>Coated:<%=theProduct.coated  %> </li>
+              <li>Width:<%=theProduct.width  %> </li>
+              <li>Length:<%=theProduct.length  %> </li>
+              <li>Int. Diameter:<%=theProduct.intDiam  %> </li>
+              <li>Quantity:<%=theProduct.quantity  %> </li>
+              <li>Add. Info:<%=theProduct.addInfo  %> </li>
+              <li>Image: <img src="<%=theProduct.image %>" style="height:300px" alt=""></li>
+                <a href="/my-productsR/<%= oneProduct._id%>/delete" class="btn btn-danger">Delete PO</a>
+                <a href="/my-productsR/<%= oneProduct._id%>/edit" class="btn btn-danger">Edit PO</a>
+
+              </ul>
+      </div>
+      <div class="col-sm-4 detailsR imgR">
+        <img src="/images/sample1.jpg" height"400" alt="">
+      </div>
+    </div>
+  </div>
+</div>
