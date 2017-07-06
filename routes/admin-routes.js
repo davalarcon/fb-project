@@ -32,7 +32,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
 
 //  THIS ROUTE WILL GIVE ME THE ORDERS PLACED BY A PARTICULAR CLIENT
 
-  router.get('/admin-product-list-by-client/:myId/list', (req, res, next)=>{
+  router.get('/admin-productR-list-by-client/:myId/list', (req, res, next)=>{
         if (req.user === undefined){
           res.redirect('/login');
           return;
@@ -46,11 +46,93 @@ router.get('/admin-clients-list', (req, res, next)=>{
               return;
             }
               res.locals.clientsResults = clientsResults;
-              res.render('admin-views/admin-product-list-by-client-view.ejs');
+              res.render('admin-views/admin-productR-list-by-client-view.ejs');
 
         });
     });
 
+    //--------------------------------------------------------
+    //           👇👇   ROUTERS TO ADMIN ROLLS👇👇👇
+    //--------------------------------------------------------
+
+    router.get('/admin-productsR/:myId/details', (req, res, next)=>{
+        ProductRModel.findById(
+          req.params.myId,
+          (err, theProduct)=>{
+            if(err){
+              next(err);
+              return;
+            }
+            res.render('admin-views/admin-productR-detail-view.ejs',{
+              theProduct:theProduct
+            });
+          }
+        );
+    });
+
+    router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
+        ProductRModel.findByIdAndRemove(
+          req.params.myId,
+          (err, theProduct)=>{
+            if(err){
+              next(err);
+              return;
+            }
+            res.redirect('/admin-productsR');
+          }
+        );
+    });
+
+//--------------------------------------------------------
+//           👇👇   ROUTERS TO ADMIN SELF ADHESIVE👇👇👇
+//--------------------------------------------------------
+
+    router.get('/admin-productS-list-by-client/:myId/list', (req, res, next)=>{
+          if (req.user === undefined){
+            res.redirect('/login');
+            return;
+          }
+          ProductSModel
+            .find({createdBy: req.params.myId})
+            .populate('createdBy')
+            .exec((err, clientsResults)=>{
+              if(err){
+                next(err);
+                return;
+              }
+                res.locals.clientsResults = clientsResults;
+                res.render('admin-views/admin-productS-list-by-client-view.ejs');
+
+          });
+      });
+
+      router.get('/admin-productsS/:myId/details', (req, res, next)=>{
+          ProductSModel.findById(
+            req.params.myId,
+            (err, theProduct)=>{
+              if(err){
+                next(err);
+                return;
+              }
+              res.render('admin-views/admin-productS-detail-view.ejs',{
+                theProduct:theProduct
+              });
+            }
+          );
+      });
+
+      router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
+          ProductSModel.findByIdAndRemove(
+            req.params.myId,
+            (err, theProduct)=>{
+              if(err){
+                next(err);
+                return;
+              }
+              res.redirect('/admin-productsR');
+            }
+          );
+      });
 
 
 //THIS ROUTE WILL GIVE ME ALL THE POs OF ALL CLIENTES IN ONE SCREEN
@@ -73,33 +155,7 @@ router.get('/admin-productsR', (req, res, next)=>{
 
 
 
-router.get('/admin-productsR/:myId/details', (req, res, next)=>{
-    ProductRModel.findById(
-      req.params.myId,
-      (err, theProduct)=>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.render('admin-views/admin-productR-detail-view.ejs',{
-          theProduct:theProduct
-        });
-      }
-    );
-});
 
-router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
-    ProductRModel.findByIdAndRemove(
-      req.params.myId,
-      (err, theProduct)=>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.redirect('/admin-productsR');
-      }
-    );
-});
 
 
 //---------- DETAILS AND DELETE CLIENTS ---------------------

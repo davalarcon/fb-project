@@ -4,7 +4,7 @@
 
     </div>
     <div class="col-sm-6 newproduct">
-      <h1>ADMIN CLIENT LIST VIEW</h1>
+      <h1>ADMIN PO Rolls LIST BY CLIENT</h1>
       <!-- <h2>NEW PURCHASE ORDER</h2> -->
       <p></p>
     </div>
@@ -21,17 +21,15 @@
         </div>
       <div class="col-sm-6">
           <ul class="listR">
-               <%  clientsResults.forEach((oneClient)=>{ %>
+               <%  clientsResults.forEach((oneOrder)=>{ %>
                   <div class="bg-info pos">
             <li>
-              <h4>Business Name:<%= oneClient.businessName %></h4>
-              <h4>User Name:<%= oneClient.fullName %> </h4>
-              <h4>Nit: <%= oneClient.businessNit %></h4>
+              <h4>Order Or Quote:<%= oneOrder.orderOrQuote %></h4>
+              <h4>Date Created:<%= oneOrder.createdAt %> </h4>
+              <h4>Client PO #: <%= oneOrder.poNumber %></h4>
 
+              <a href="/admin-productsS/<%= oneOrder._id%>/details" class="btn btn-info">PO DETAILS</a>
 
-            <a href="/admin-client-detail/<%= oneClient._id%>/details" class="btn btn-info">CLIENT DETAILS</a>
-            <a href="/admin-productR-list-by-client/<%= oneClient._id%>/list" class="btn btn-info">R PO by client</a>
-              <a href="/admin-productS-list-by-client/<%= oneClient._id%>/list" class="btn btn-info">S PO by client</a>
 
           </li>
               </div>

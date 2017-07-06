@@ -50,7 +50,7 @@ router.post('/signup',(req, res, next)=>{
           next(err);
           return;
         }
-        res.render('views/loggedin-view.ejs');
+        res.redirect('/logged');
       });
     }
   );
