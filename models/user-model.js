@@ -14,7 +14,7 @@ const myUserSchema = new Schema(
 
     googleId: {type: String },
     facebookId: {type: String},
-    role: {type: String}
+    role: {type: String, default: 'Client'},
   },
   {
     timestamps: true,
