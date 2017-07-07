@@ -122,6 +122,7 @@ router.get('/my-productsR/:myId/edit', (req, res, next)=>{
         next(err);
         return;
       }
+
       res.render('product-views/productR-edit-view.ejs',{
         productRFromDb:productRFromDb
       });
@@ -130,6 +131,7 @@ router.get('/my-productsR/:myId/edit', (req, res, next)=>{
 });
 
 router.post('/my-productsR/:myId/update',(req, res, next)=>{
+  console.log('hereeeeeee' + req.body.newProductIntDiam);
   ProductRModel.findByIdAndUpdate(
     req.params.myId,
     {
@@ -138,16 +140,18 @@ router.post('/my-productsR/:myId/update',(req, res, next)=>{
       coated: req.body.newProductCoated,
       width: req.body.newProductWidth,
       length: req.body.newProductLength,
-      intDiam: req.body.newProductIntDiam,
-      quantity: req.body.newProductQuantity,
-      
+      intDiam: req.body.newProductIntDiam
+
+      // quantity: req.body.newProductQuantity,
+      // addInfo: req.body.newProductAddInfo,
     },
     (err, productRFromDb)=>{
       if(err){
         next(err);
         return;
       }
-      res.redirect('/my-productsR/'+productRFromDb+':myId/delete');
+
+      res.redirect('/admin-clients-list');
     }
   );
 });
