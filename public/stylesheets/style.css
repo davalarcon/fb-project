@@ -98,6 +98,40 @@ a {
   /*background-color: white;*/
 }
 
+.textProducts{
+  text-align: center;
+}
+.contProducts1{
+  height: 650px;
+  border-bottom: 5px;
+}
+
+.contProducts2{
+  margin-top: 40px;
+  /*border: solid black;*/
+  height: 100px;
+}
+.contProducts3{
+  /*border: solid black;*/
+  height: 420px;
+}
+.contProducts4a{
+  /*border: solid black;*/
+  height: 400px;
+
+}
+.contProducts4b{
+  /*border: solid black;*/
+  height: 400px;
+}
+.welcome1{
+  height: 600px;
+}
+.welcome2{
+  height: 500px;
+  
+}
+
 footer{
   height: 100px;
   background-color: LIGHTGRAY;

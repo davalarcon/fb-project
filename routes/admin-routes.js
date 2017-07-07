@@ -56,7 +56,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
     });
 
     //--------------------------------------------------------
-    //           👇👇   ROUTERS TO ADMIN ROLLS👇👇👇
+    //           👇👇   ROUTERS TO ADMIN PRODUCT ROLLOS 👇👇👇
     //--------------------------------------------------------
 
     router.get('/admin-productsR/:myId/details', (req, res, next)=>{
@@ -103,7 +103,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
     });
 
 //--------------------------------------------------------
-//           👇👇   ROUTERS TO ADMIN SELF ADHESIVE👇👇👇
+//           👇👇   ROUTERS TO ADMIN PRODUCT SELF ADHESIVE👇👇👇
 //--------------------------------------------------------
 
     router.get('/admin-productS-list-by-client/:myId/list', (req, res, next)=>{
@@ -164,7 +164,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
             }
           );
         }else {
-          res.redirect('/');
+          res.redirect('/images/planta04 crop.jpg');
         }
       });
 
