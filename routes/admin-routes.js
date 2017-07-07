@@ -15,10 +15,9 @@ const router = express.Router();
 
 //--THIS ROUTE WILL GIVE ME A LIST OF ALL THE CLIENTS IN THE SYSTEM-----
 router.get('/admin-clients-list', (req, res, next)=>{
-      if (req.user.role === 'Admin'){
-        res.redirect('/login');
-        return;
-      }
+        if (req.user === undefined){
+          res.redirect('/login');
+        } else if (req.user.role === 'Admin'){
       UserModel.find((err, clientsResults)=>{
           if(err){
             next(err);
@@ -28,6 +27,9 @@ router.get('/admin-clients-list', (req, res, next)=>{
             res.render('admin-views/admin-clients-list-view.ejs');
 
       });
+    }else {
+      res.redirect('/');
+    }
   });
 
 //  THIS ROUTE WILL GIVE ME THE ORDERS PLACED BY A PARTICULAR CLIENT
@@ -35,8 +37,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
   router.get('/admin-productR-list-by-client/:myId/list', (req, res, next)=>{
         if (req.user === undefined){
           res.redirect('/login');
-          return;
-        }
+        } else if (req.user.role === 'Admin'){
         ProductRModel
           .find({createdBy: req.params.myId})
           .populate('createdBy')
@@ -49,6 +50,9 @@ router.get('/admin-clients-list', (req, res, next)=>{
               res.render('admin-views/admin-productR-list-by-client-view.ejs');
 
         });
+      } else {
+        res.redirect ('/');
+      }
     });
 
     //--------------------------------------------------------
@@ -56,10 +60,10 @@ router.get('/admin-clients-list', (req, res, next)=>{
     //--------------------------------------------------------
 
     router.get('/admin-productsR/:myId/details', (req, res, next)=>{
-        // if(req.admin === undefined){
-        //   res.redirect('/logged');
-        //   return;
-        // }
+
+      if (req.user === undefined){
+            res.redirect('/login');
+          }else if (req.user.role === 'Admin'){
 
         ProductRModel.findById(
           req.params.myId,
@@ -73,13 +77,16 @@ router.get('/admin-clients-list', (req, res, next)=>{
             });
           }
         );
+      } else {
+        res.redirect ('/');
+      }
     });
 
     router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
-      // if(req.admin === undefined){
-      //   res.redirect('/logged');
-      //   return;
-      // }
+      if (req.user === undefined){
+          res.redirect('/login');
+        }else if (req.user.role === 'Admin'){
+
         ProductRModel.findByIdAndRemove(
           req.params.myId,
           (err, theProduct)=>{
@@ -90,6 +97,9 @@ router.get('/admin-clients-list', (req, res, next)=>{
             res.redirect('/admin-productsR');
           }
         );
+      } else {
+        res.redirect ('/');
+      }
     });
 
 //--------------------------------------------------------
@@ -99,8 +109,7 @@ router.get('/admin-clients-list', (req, res, next)=>{
     router.get('/admin-productS-list-by-client/:myId/list', (req, res, next)=>{
           if (req.user === undefined){
             res.redirect('/login');
-            return;
-          }
+          } else if (req.user.role === 'Admin'){
           ProductSModel
             .find({createdBy: req.params.myId})
             .populate('createdBy')
@@ -111,15 +120,17 @@ router.get('/admin-clients-list', (req, res, next)=>{
               }
                 res.locals.clientsResults = clientsResults;
                 res.render('admin-views/admin-productS-list-by-client-view.ejs');
-
           });
+        } else {
+          res.redirect ('/');
+        }
       });
 
       router.get('/admin-productsS/:myId/details', (req, res, next)=>{
-        // if(req.admin === undefined){
-        //   res.redirect('/logged');
-        //   return;
-        // }
+            if (req.user === undefined){
+              res.redirect('/login');
+            }else if (req.user.role === 'Admin'){
+
           ProductSModel.findById(
             req.params.myId,
             (err, theProduct)=>{
@@ -132,13 +143,16 @@ router.get('/admin-clients-list', (req, res, next)=>{
               });
             }
           );
+        } else {
+          res.redirect('/');
+        }
       });
 
       router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
-        // if(req.admin === undefined){
-        //   res.redirect('/logged');
-        //   return;
-        // }
+        if (req.user === undefined){
+          res.redirect('/login');
+        }else if (req.user.role === 'Admin'){
+
           ProductSModel.findByIdAndRemove(
             req.params.myId,
             (err, theProduct)=>{
@@ -149,25 +163,31 @@ router.get('/admin-clients-list', (req, res, next)=>{
               res.redirect('/admin-productsR');
             }
           );
+        }else {
+          res.redirect('/');
+        }
       });
 
 
 //THIS ROUTE WILL GIVE ME ALL THE POs OF ALL CLIENTES IN ONE SCREEN
 
 router.get('/admin-productsR', (req, res, next)=>{
-      if (req.user === undefined){
+      if (req.user === undefined) {
         res.redirect('/login');
-        return;
-      }
-      ProductRModel.find((err, productRResults)=>{
+      } else if (req.user.role === 'Admin'){
+
+        ProductRModel.find((err, productRResults)=>{
           if(err){
             next(err);
             return;
           }
-            res.locals.productRResults = productRResults;
-            res.render('product-views/productR-list-view.ejs');
+          res.locals.productRResults = productRResults;
+          res.render('product-views/productR-list-view.ejs');
 
-      });
+        });
+      } else {
+        res.redirect ('/');
+      }
   });
 
 
@@ -178,10 +198,10 @@ router.get('/admin-productsR', (req, res, next)=>{
 //---------- DETAILS AND DELETE CLIENTS ---------------------
 
 router.get('/admin-client-detail/:myId/details', (req, res, next)=>{
-   // if(req.admin === undefined){
-    //   res.redirect('/logged');
-    //   return;
-    // }`
+  if (req.user === undefined){
+           res.redirect('/login');
+         }else if (req.user.role === 'Admin'){
+
     UserModel.findById(
       req.params.myId,
       (err, theClient)=>{
@@ -193,13 +213,16 @@ router.get('/admin-client-detail/:myId/details', (req, res, next)=>{
         res.render('admin-views/admin-client-detail-view.ejs');
       }
     );
+  } else {
+    res.redirect ('/');
+  }
 });
 
 router.get('/admin-client-detail/:myId/delete', (req, res, next)=>{
-  // if(req.admin === undefined){
-  //   res.redirect('/logged');
-  //   return;
-  // }
+  if (req.user === undefined){
+          res.redirect('/login');
+        }else if (req.user.role === 'Admin') {
+
     UserModel.findByIdAndRemove(
       req.params.myId,
       (err, theProduct)=>{
@@ -210,6 +233,9 @@ router.get('/admin-client-detail/:myId/delete', (req, res, next)=>{
         res.redirect('/admin-clients-list');
       }
     );
+  } else {
+    res.redirect ('/');
+  }
 });
 
 

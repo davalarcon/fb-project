@@ -18,6 +18,10 @@ a {
   float: right;
 }
 
+.nav-drop {
+  padding-top: 0;
+}
+
 .whitesmoke{
   margin-top: 15px;
   background-color: #f8f8f8;
