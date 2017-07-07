@@ -10,6 +10,7 @@ const router = express.Router();
 
 
 router.get('/products/newR', (req, res, next)=>{
+
   if (req.user) {
     res.render('product-views/new-productR-views.ejs');
   } else {

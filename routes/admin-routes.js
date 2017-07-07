@@ -15,7 +15,7 @@ const router = express.Router();
 
 //--THIS ROUTE WILL GIVE ME A LIST OF ALL THE CLIENTS IN THE SYSTEM-----
 router.get('/admin-clients-list', (req, res, next)=>{
-      if (req.user === undefined){
+      if (req.user.role === 'Admin'){
         res.redirect('/login');
         return;
       }
@@ -56,6 +56,11 @@ router.get('/admin-clients-list', (req, res, next)=>{
     //--------------------------------------------------------
 
     router.get('/admin-productsR/:myId/details', (req, res, next)=>{
+        // if(req.admin === undefined){
+        //   res.redirect('/logged');
+        //   return;
+        // }
+
         ProductRModel.findById(
           req.params.myId,
           (err, theProduct)=>{
@@ -71,6 +76,10 @@ router.get('/admin-clients-list', (req, res, next)=>{
     });
 
     router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
+      // if(req.admin === undefined){
+      //   res.redirect('/logged');
+      //   return;
+      // }
         ProductRModel.findByIdAndRemove(
           req.params.myId,
           (err, theProduct)=>{
@@ -107,6 +116,10 @@ router.get('/admin-clients-list', (req, res, next)=>{
       });
 
       router.get('/admin-productsS/:myId/details', (req, res, next)=>{
+        // if(req.admin === undefined){
+        //   res.redirect('/logged');
+        //   return;
+        // }
           ProductSModel.findById(
             req.params.myId,
             (err, theProduct)=>{
@@ -122,6 +135,10 @@ router.get('/admin-clients-list', (req, res, next)=>{
       });
 
       router.get('/admin-productsR/:myId/delete', (req, res, next)=>{
+        // if(req.admin === undefined){
+        //   res.redirect('/logged');
+        //   return;
+        // }
           ProductSModel.findByIdAndRemove(
             req.params.myId,
             (err, theProduct)=>{
@@ -161,7 +178,10 @@ router.get('/admin-productsR', (req, res, next)=>{
 //---------- DETAILS AND DELETE CLIENTS ---------------------
 
 router.get('/admin-client-detail/:myId/details', (req, res, next)=>{
-  console.log('log');
+   // if(req.admin === undefined){
+    //   res.redirect('/logged');
+    //   return;
+    // }`
     UserModel.findById(
       req.params.myId,
       (err, theClient)=>{
@@ -176,6 +196,10 @@ router.get('/admin-client-detail/:myId/details', (req, res, next)=>{
 });
 
 router.get('/admin-client-detail/:myId/delete', (req, res, next)=>{
+  // if(req.admin === undefined){
+  //   res.redirect('/logged');
+  //   return;
+  // }
     UserModel.findByIdAndRemove(
       req.params.myId,
       (err, theProduct)=>{

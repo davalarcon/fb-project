@@ -28,6 +28,9 @@
               <a href="/admin-productsR" class="btn btn-default">ADMIN VIEW</a>
               <a href="/admin-clients-list" class="btn btn-default">CLIENTS</a>
 
+              <% if (currentUser.role === 'Admin') { %>
+                <!-- ADMIN STUFF -->
+              <% } %>
 
                 <a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -41,6 +44,7 @@
                   </ul>
 
                 <a href="/logout" class="btn btn-warning" style="margin-left:15px">Log Out</a>
+
           <%  } else {  %>
               <a href="/login" class="btn btn-default" style="margin-left:15px">Log In</a>
               <a href="/signup" class="btn btn-default">Sign Up</a>
@@ -53,7 +57,7 @@
           <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
           <div class="navbar-header">
             <a class="navbar-brand" href="#">
-              <img alt="Brand" src="images/long.png" height="20">
+              <img alt="Brand" src="/images/long.png" height="20">
             </a>
           </div>
         </div>
