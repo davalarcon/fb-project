@@ -114,6 +114,43 @@ router.get('/my-productsR/:myId/delete', (req, res, next)=>{
     );
 });
 
+router.get('/my-productsR/:myId/edit', (req, res, next)=>{
+  ProductRModel.findById(
+    req.params.myId,
+    (err, productRFromDb)=>{
+      if(err){
+        next(err);
+        return;
+      }
+      res.render('product-views/productR-edit-view.ejs',{
+        productRFromDb:productRFromDb
+      });
+    }
+  );
+});
+
+router.post('/my-productsR/:myId/update',(req, res, next)=>{
+  ProductRModel.findByIdAndUpdate(
+    req.params.myId,
+    {
+      poNumber: req.body.newProductPoOrder,
+      typeOfP: req.body.newProductType,
+      coated: req.body.newProductCoated,
+      width: req.body.newProductWidth,
+      length: req.body.newProductLength,
+      intDiam: req.body.newProductIntDiam,
+      quantity: req.body.newProductQuantity,
+      
+    },
+    (err, productRFromDb)=>{
+      if(err){
+        next(err);
+        return;
+      }
+      res.redirect('/my-productsR/'+productRFromDb+':myId/delete');
+    }
+  );
+});
 
 
 
